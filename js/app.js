@@ -1,6 +1,5 @@
 /*-------------- Constants -------------*/
 
-
 /*---------- Variables (state) ---------*/
 // setup board
 // shuffle cards
@@ -14,6 +13,10 @@ let cardValues = [
     '🥺', '🥺',
     '🫠', '🫠',
 ];
+let gameBoard;
+let turn;
+let win;
+let lose;
 
 
 /*----- Cached Element References  -----*/
@@ -21,6 +24,8 @@ let cardValues = [
 
 /*-------------- Functions -------------*/
 // render game board
+
+// shuffle cards
 
 // check for a match
 
