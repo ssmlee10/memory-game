@@ -26,6 +26,18 @@ const resetBtn = document.querySelector('#reset');
 
 /*-------------- Functions -------------*/
 // render game board
+function init() {
+    board = [
+        '', '', '', '',
+        '', '', '', '',
+        '', '', '', '',
+        '', '', '', '',
+    ]
+};
+
+function render() {
+
+};
 
 // shuffle cards
 
