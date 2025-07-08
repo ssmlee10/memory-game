@@ -20,7 +20,9 @@ let lose;
 
 
 /*----- Cached Element References  -----*/
-
+const messageElement = document.querySelector('#message');
+const squareElements = document.querySelector('.sqr');
+const resetBtn = document.querySelector('#reset');
 
 /*-------------- Functions -------------*/
 // render game board
