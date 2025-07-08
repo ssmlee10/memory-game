@@ -43,6 +43,8 @@ function render() {
 
 // check for a match
 
+// update message
+
 // check if all cards have been matched (you win!
 
 // restart game
@@ -53,3 +55,7 @@ function render() {
 
 /*----------- Event Listeners ----------*/
 // listen for card click, flip over when card has been clicked
+squareElements.forEach (squareElement => {
+    squareElement.addEventListener('click', handleClick);
+});
+
