@@ -3,40 +3,37 @@
 /*---------- Variables (state) ---------*/
 // setup board
 // shuffle cards
-let cardValues = [
-    '🙃', '🙃',
-    '😍', '😍',
-    '🤪', '🤪',
-    '🤩', '🤩',
-    '🧐', '🧐',
-    '🥸', '🥸',
-    '🥺', '🥺',
-    '🫠', '🫠',
-];
 let gameBoard;
 let turn;
+let flippedCards;
+let matchedPairs;
 let win;
 let lose;
 
 
 /*----- Cached Element References  -----*/
 const messageElement = document.querySelector('#message');
-const squareElements = document.querySelector('.sqr');
+const squareElements = document.querySelectorAll('.sqr');
 const resetBtn = document.querySelector('#reset');
 
 /*-------------- Functions -------------*/
 // render game board
-function init() {
-    board = [
-        '', '', '', '',
-        '', '', '', '',
-        '', '', '', '',
-        '', '', '', '',
-    ]
-};
+// function init() {
+//     board = [
+//         '', '', '', '',
+//         '', '', '', '',
+//         '', '', '', '',
+//         '', '', '', '',
+//     ]
+// };
 
-function render() {
+// function render() {
 
+// };
+
+function handleClick(event) {
+    const squareElements = event.target.id;
+    console.dir(squareElements);
 };
 
 // shuffle cards
@@ -55,7 +52,7 @@ function render() {
 
 /*----------- Event Listeners ----------*/
 // listen for card click, flip over when card has been clicked
-squareElements.forEach (squareElement => {
+squareElements.forEach((squareElement) => {
     squareElement.addEventListener('click', handleClick);
 });
 
