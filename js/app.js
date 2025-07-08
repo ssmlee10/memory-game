@@ -7,6 +7,8 @@ let gameBoard;
 let turn;
 let flippedCards;
 let matchedPairs;
+let cardOne;
+let cardTwo;
 let win;
 let lose;
 
@@ -34,6 +36,11 @@ const resetBtn = document.querySelector('#reset');
 function handleClick(event) {
     const squareElements = event.target.id;
     console.dir(squareElements);
+    if 
+};
+
+function checkMatch() {
+
 };
 
 // shuffle cards
