@@ -8,7 +8,7 @@ body {
 #board {
     display: flex;
     flex-wrap: wrap;
-    width: 800px;
+    width: 83%;
     margin: auto;
     padding: 10px 0 60px 0;
     justify-content: center;
@@ -29,10 +29,16 @@ body {
 }
 
 img {
-    width: 150px;
+    width: 95%;
 }
 
 #messageElement {
     font-weight: bold;
     padding: 0 0 15px 0;
+}
+
+#reset {
+    padding: 15px 40px;
+    background-color: teal;
+    color: white;
 }

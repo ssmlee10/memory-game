@@ -8,6 +8,7 @@ let hasFlippedCard;
 let matchedPairs = 0;
 let firstCardClicked;
 let secondCardClicked;
+let tries;
 let win;
 let lose;
 
@@ -18,7 +19,7 @@ const cardElements = document.querySelectorAll('.card');
 const resetBtn = document.querySelector('#reset');
 
 /*-------------- Functions -------------*/
-// initial board reset
+// initial board for reset
 function init() {
     firstCardClicked = undefined;
     secondCardClicked = undefined;
@@ -48,7 +49,7 @@ function checkMatch() {
         console.log(matchedPairs);
         updateMessage();
         resetAfterMatch();
-        // add class to cards that match
+        // add class to cards that match (save this for the end)
         // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
         // cards flipped over, then won't be able to click again
     } else if (firstCardClicked != secondCardClicked) {
@@ -64,6 +65,7 @@ function resetAfterMatch() {
     secondCardClicked = undefined;
 };
 
+// udpateMessage showing how many pairs found thus far
 function updateMessage() {
     if (matchedPairs < 8) {
         messageElement.textContent = `You have ${matchedPairs} matched pairs! Keep going!`
@@ -80,13 +82,11 @@ function checkWin() {
     }
 }
 
+// losing function
 
 
 // shuffle cards
 
-// update message
-
-// check if all cards have been matched (you win!)
 
 // restart game
 
