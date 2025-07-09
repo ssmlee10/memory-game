@@ -11,7 +11,6 @@ let secondCardClicked;
 let win;
 let lose;
 
-
 /*----- Cached Element References  -----*/
 const messageElement = document.querySelector('#messageElement');
 const boardElements = document.querySelector('#board');
@@ -19,6 +18,13 @@ const cardElements = document.querySelectorAll('.card');
 const resetBtn = document.querySelector('#reset');
 
 /*-------------- Functions -------------*/
+// initial board reset
+function init() {
+    firstCardClicked = undefined;
+    secondCardClicked = undefined;
+    matchedPairs = 0;
+}
+
 // register click values
 function handleClick(event) {
     const parentElement = event.target.parentElement;
@@ -74,11 +80,13 @@ function checkWin() {
     }
 }
 
+
+
 // shuffle cards
 
 // update message
 
-// check if all cards have been matched (you win!
+// check if all cards have been matched (you win!)
 
 // restart game
 
