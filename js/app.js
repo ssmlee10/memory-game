@@ -8,7 +8,8 @@ let hasFlippedCard;
 let matchedPairs = 0;
 let firstCardClicked;
 let secondCardClicked;
-let tries;
+let tries = 0;
+let triesLeft;
 let win;
 let lose;
 
@@ -26,6 +27,13 @@ function init() {
     matchedPairs = 0;
 }
 
+// count number of tries
+function countTries() {
+    tries = tries +1;
+    console.log(tries);
+    triesLeft = 100 - tries;
+};
+
 // register click values
 function handleClick(event) {
     const parentElement = event.target.parentElement;
@@ -39,6 +47,7 @@ function handleClick(event) {
         checkMatch();
     }
     checkWin();
+    countTries();
 };
 
 // check for a match
@@ -68,7 +77,7 @@ function resetAfterMatch() {
 // udpateMessage showing how many pairs found thus far
 function updateMessage() {
     if (matchedPairs < 8) {
-        messageElement.textContent = `You have ${matchedPairs} matched pairs! Keep going!`
+        messageElement.textContent = `You have ${matchedPairs} matched pairs in ${tries} tries! Tries left: ${triesLeft}`
     } else if (matchedPairs = 8) {
         messageElement.textContent = `You found all 8 pairs! Thank you for contributing to the No Missing Socks Movement!`
     }
