@@ -2,41 +2,32 @@
 
 /*---------- Variables (state) ---------*/
 // setup board
-// shuffle cards
 let gameBoard;
 let turn;
-let flippedCards;
+let hasFlippedCard;
 let matchedPairs;
-let cardOne;
-let cardTwo;
+let firstCardClicked;
+let secondCardClicked;
 let win;
 let lose;
 
 
 /*----- Cached Element References  -----*/
 const messageElement = document.querySelector('#message');
-const squareElements = document.querySelectorAll('.sqr');
+const boardElements = document.querySelector('#board');
+const cardElements = document.querySelectorAll('.card');
 const resetBtn = document.querySelector('#reset');
 
 /*-------------- Functions -------------*/
-// render game board
-// function init() {
-//     board = [
-//         '', '', '', '',
-//         '', '', '', '',
-//         '', '', '', '',
-//         '', '', '', '',
-//     ]
-// };
-
-// function render() {
-
-// };
-
 function handleClick(event) {
-    const squareElements = event.target.id;
-    console.dir(squareElements);
-    if 
+    const parentElement = event.target.parentElement;
+    if (firstCardClicked === undefined) {
+        firstCardClicked = parentElement.id;
+    } else {
+        secondCardClicked = parentElement.id;
+    }
+    console.log(firstCardClicked);
+    console.log(secondCardClicked);
 };
 
 function checkMatch() {
@@ -59,7 +50,7 @@ function checkMatch() {
 
 /*----------- Event Listeners ----------*/
 // listen for card click, flip over when card has been clicked
-squareElements.forEach((squareElement) => {
-    squareElement.addEventListener('click', handleClick);
+cardElements.forEach((cardElement) => {
+    cardElement.addEventListener('click', handleClick);
 });
 

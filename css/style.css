@@ -5,16 +5,17 @@ body {
     text-align: center;
 }
 
-.board {
+#board {
     display: flex;
     flex-wrap: wrap;
     width: 800px;
     margin: auto;
     padding: 10px 0 60px 0;
     justify-content: center;
+    text-align: center;
 }
 
-.sqr {
+.card {
     background-color: white;
     width: 20%;
     aspect-ratio: 1/1;
