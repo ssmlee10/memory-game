@@ -59,8 +59,8 @@ function resetAfterMatch() {
 
 function checkWin() {
     if (matchedPairs === 8) {
-        console.log(win);
         win = true;
+        console.log(win);
     }
 }
 
