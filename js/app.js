@@ -25,14 +25,10 @@ function init() {
     firstCardClicked = undefined;
     secondCardClicked = undefined;
     matchedPairs = 0;
+    tries = 0;
+    triesLeft = 100-tries;
 }
-
-// count number of tries
-function countTries() {
-    tries = tries +1;
-    console.log(tries);
-    triesLeft = 100 - tries;
-};
+init();
 
 // register click values
 function handleClick(event) {
@@ -47,7 +43,18 @@ function handleClick(event) {
         checkMatch();
     }
     checkWin();
-    countTries();
+    countTries(event);
+};
+
+// count number of tries
+// updateMessage to show tries used, tries left
+function countTries(event) {
+    console.log(event.target.parentElement);
+        tries = tries +1;
+        triesLeft = 100 - tries;
+        console.log(tries);
+        console.log(triesLeft);
+        updateMessage();
 };
 
 // check for a match
@@ -56,7 +63,6 @@ function checkMatch() {
         console.log('match');
         matchedPairs = matchedPairs + 1;
         console.log(matchedPairs);
-        updateMessage();
         resetAfterMatch();
         // add class to cards that match (save this for the end)
         // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
@@ -68,6 +74,7 @@ function checkMatch() {
     console.log(firstCardClicked);
     console.log(secondCardClicked);
 };
+
 // after a match pair is found, reset to find another match
 function resetAfterMatch() {
     firstCardClicked = undefined;
@@ -76,7 +83,7 @@ function resetAfterMatch() {
 
 // udpateMessage showing how many pairs found thus far
 function updateMessage() {
-    if (matchedPairs < 8) {
+    if (tries => 0) {
         messageElement.textContent = `You have ${matchedPairs} matched pairs in ${tries} tries! Tries left: ${triesLeft}`
     } else if (matchedPairs = 8) {
         messageElement.textContent = `You found all 8 pairs! Thank you for contributing to the No Missing Socks Movement!`
@@ -108,4 +115,6 @@ function checkWin() {
 cardElements.forEach((cardElement) => {
     cardElement.addEventListener('click', handleClick);
 });
+
+resetBtn.addEventListener('click', init);
 
