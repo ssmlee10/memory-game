@@ -31,3 +31,8 @@ body {
 img {
     width: 150px;
 }
+
+#messageElement {
+    font-weight: bold;
+    padding: 0 0 15px 0;
+}

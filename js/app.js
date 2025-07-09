@@ -13,12 +13,13 @@ let lose;
 
 
 /*----- Cached Element References  -----*/
-const messageElement = document.querySelector('#message');
+const messageElement = document.querySelector('#messageElement');
 const boardElements = document.querySelector('#board');
 const cardElements = document.querySelectorAll('.card');
 const resetBtn = document.querySelector('#reset');
 
 /*-------------- Functions -------------*/
+// register click values
 function handleClick(event) {
     const parentElement = event.target.parentElement;
     if (firstCardClicked === undefined) {
@@ -37,26 +38,35 @@ function handleClick(event) {
 function checkMatch() {
     if (firstCardClicked === secondCardClicked) {
         console.log('match');
-        matchedPairs = matchedPairs +1;
+        matchedPairs = matchedPairs + 1;
         console.log(matchedPairs);
+        updateMessage();
         resetAfterMatch();
         // add class to cards that match
         // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
         // cards flipped over, then won't be able to click again
-    } else if (firstCardClicked != secondCardClicked)
-     {
+    } else if (firstCardClicked != secondCardClicked) {
         console.log('not a match');
         resetAfterMatch();
     }
     console.log(firstCardClicked);
     console.log(secondCardClicked);
 };
+// after a match pair is found, reset to find another match
 function resetAfterMatch() {
     firstCardClicked = undefined;
     secondCardClicked = undefined;
-    };
-// after match, then reset
+};
 
+function updateMessage() {
+    if (matchedPairs < 8) {
+        messageElement.textContent = `You have ${matchedPairs} matched pairs! Keep going!`
+    } else if (matchedPairs = 8) {
+        messageElement.textContent = `You found all 8 pairs! Thank you for contributing to the No Missing Socks Movement!`
+    }
+};
+
+//winning function
 function checkWin() {
     if (matchedPairs === 8) {
         win = true;
