@@ -23,12 +23,13 @@ function handleClick(event) {
     const parentElement = event.target.parentElement;
     if (firstCardClicked === undefined) {
         firstCardClicked = parentElement.className;
+        console.log(firstCardClicked);
     } else {
         secondCardClicked = parentElement.className;
+        console.log(firstCardClicked);
+        console.log(secondCardClicked);
+        checkMatch();
     }
-    // console.log(firstCardClicked);
-    // console.log(secondCardClicked);
-    checkMatch();
     checkWin();
 };
 
@@ -37,12 +38,23 @@ function checkMatch() {
     if (firstCardClicked === secondCardClicked) {
         console.log('match');
         matchedPairs = matchedPairs +1;
-    } else {
-        console.log('not a match');
         console.log(matchedPairs);
+        resetAfterMatch();
+        // add class to cards that match
+        // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
+        // cards flipped over, then won't be able to click again
+    } else if (firstCardClicked != secondCardClicked)
+     {
+        console.log('not a match');
+        resetAfterMatch();
     }
+    console.log(firstCardClicked);
+    console.log(secondCardClicked);
 };
-
+function resetAfterMatch() {
+    firstCardClicked = undefined;
+    secondCardClicked = undefined;
+    };
 // after match, then reset
 
 function checkWin() {
