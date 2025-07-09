@@ -5,7 +5,7 @@
 let gameBoard;
 let turn;
 let hasFlippedCard;
-let matchedPairs;
+let matchedPairs = 0;
 let firstCardClicked;
 let secondCardClicked;
 let win;
@@ -22,21 +22,37 @@ const resetBtn = document.querySelector('#reset');
 function handleClick(event) {
     const parentElement = event.target.parentElement;
     if (firstCardClicked === undefined) {
-        firstCardClicked = parentElement.id;
+        firstCardClicked = parentElement.className;
     } else {
-        secondCardClicked = parentElement.id;
+        secondCardClicked = parentElement.className;
     }
-    console.log(firstCardClicked);
-    console.log(secondCardClicked);
+    // console.log(firstCardClicked);
+    // console.log(secondCardClicked);
+    checkMatch();
+    checkWin();
 };
-
-function checkMatch() {
-
-};
-
-// shuffle cards
 
 // check for a match
+function checkMatch() {
+    if (firstCardClicked === secondCardClicked) {
+        console.log('match');
+        matchedPairs = matchedPairs +1;
+    } else {
+        console.log('not a match');
+        console.log(matchedPairs);
+    }
+};
+
+// after match, then reset
+
+function checkWin() {
+    if (matchedPairs === 8) {
+        console.log(win);
+        win = true;
+    }
+}
+
+// shuffle cards
 
 // update message
 
