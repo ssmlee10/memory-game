@@ -48,7 +48,10 @@ init();
 // count number of tries
 // updateMessage to show tries used, tries left
 function countTries(event) {
+    console.log(event.target);
     console.log(event.target.parentElement);
+    console.log(event.target.children);
+    console.log(event.target.nextElementSibling);
     tries = tries + 1;
     triesLeft = 50 - tries;
     updateMessage();
@@ -72,11 +75,19 @@ function handleClick(event) {
     checkWin();
     countTries(event);
     // if card is clicked, current image being displayed should have a class added of toggleImg, the other image should have the class of toggleImg removed. this will remove the image
-    console.log(containerOne);
-    console.log(coverCard);
-    console.log(cloudSockOne);
-    coverCard.classList.add('toggleImg');
-    cloudSockOne.classList.remove('toggleImg');
+
+    // event.target is the first element inside of the div individual card elements
+    event.target.classList.add('toggleImg');
+    // event.target.nextElementSibling is the next element that is in the same card container div, in this case the next sib is an image
+    event.target.nextElementSibling.classList.remove('toggleImg');
+
+    
+    // toggling the first card in the first box
+    // console.log(cardElements);
+    // console.log(coverCard);
+    // console.log(cloudSockOne);
+    // coverCard.classList.add('toggleImg');
+    // cloudSockOne.classList.remove('toggleImg')
 
     // if (containerOne.classList.contains('toggleImg')) {
     //     console.log("toggle image found");
@@ -90,12 +101,6 @@ function handleClick(event) {
     //     event.target.children[0].classList.remove('toggleImg');
     // };
 };
-    // this works if laundryCard is not there
-    // console.log(event.target.children[0]);
-    // if (event.target.children[0].classList.contains('toggleImg')) {
-    //     console.log("toggle image found");
-    //     event.target.children[0].classList.remove('toggleImg');
-    // };
 
 // check for a match
 function checkMatch() {
