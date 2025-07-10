@@ -26,12 +26,26 @@ function init() {
     secondCardClicked = undefined;
     matchedPairs = 0;
     tries = 0;
-    triesLeft = 100-tries;
+    triesLeft = 100 - tries;
 }
 init();
 
+// count number of tries
+// updateMessage to show tries used, tries left
+function countTries(event) {
+    console.log(event.target.parentElement);
+    tries = tries + 1;
+    triesLeft = 10 - tries;
+    console.log(tries);
+    console.log(triesLeft);
+    updateMessage();
+};
+
 // register click values
 function handleClick(event) {
+    if (tries >= 10) {
+        return;
+    }
     const parentElement = event.target.parentElement;
     if (firstCardClicked === undefined) {
         firstCardClicked = parentElement.className;
@@ -44,17 +58,6 @@ function handleClick(event) {
     }
     checkWin();
     countTries(event);
-};
-
-// count number of tries
-// updateMessage to show tries used, tries left
-function countTries(event) {
-    console.log(event.target.parentElement);
-        tries = tries +1;
-        triesLeft = 100 - tries;
-        console.log(tries);
-        console.log(triesLeft);
-        updateMessage();
 };
 
 // check for a match
@@ -84,7 +87,7 @@ function resetAfterMatch() {
 // udpateMessage showing how many pairs found thus far
 function updateMessage() {
     if (tries => 0) {
-        messageElement.textContent = `You have ${matchedPairs} matched pairs in ${tries} tries! Tries left: ${triesLeft}`
+        messageElement.textContent = `You have ${matchedPairs} matched pairs after ${tries} tries! Tries left: ${triesLeft}`
     } else if (matchedPairs = 8) {
         messageElement.textContent = `You found all 8 pairs! Thank you for contributing to the No Missing Socks Movement!`
     }
