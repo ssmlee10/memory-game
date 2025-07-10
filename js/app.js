@@ -4,8 +4,7 @@
 // setup board
 let gameBoard;
 let turn;
-let hasFlippedCard;
-let matchedPairs = 0;
+let matchedPairs;
 let firstCardClicked;
 let secondCardClicked;
 let tries = 0;
@@ -18,6 +17,10 @@ const messageElement = document.querySelector('#messageElement');
 const boardElements = document.querySelector('#board');
 const cardElements = document.querySelectorAll('.card');
 const resetBtn = document.querySelector('#reset');
+// select the first container, then select the first img
+const containerOne = document.querySelector('.cloudSock');
+const coverCard = containerOne.querySelector('img');
+const cloudSockOne = containerOne.querySelectorAll('img')[1];
 
 /*-------------- Functions -------------*/
 // initial board for reset
@@ -26,24 +29,34 @@ function init() {
     secondCardClicked = undefined;
     matchedPairs = 0;
     tries = 0;
-    triesLeft = 100 - tries;
+    triesLeft = 50 - tries;
 }
 init();
+
+// flip card on click
+// const img = document.querySelectorAll('faceCard');
+
+// cardElement.addEventListener('click', function() {
+//     if (img.classList.contains('toggleImg')) {
+//         img.classList.remove('toggleImg');
+//     } else {
+//         img.classList.add('toggleImg');
+//     }
+
+// })
 
 // count number of tries
 // updateMessage to show tries used, tries left
 function countTries(event) {
     console.log(event.target.parentElement);
     tries = tries + 1;
-    triesLeft = 10 - tries;
-    console.log(tries);
-    console.log(triesLeft);
+    triesLeft = 50 - tries;
     updateMessage();
 };
 
 // register click values
 function handleClick(event) {
-    if (tries >= 10) {
+    if (tries >= 50) {
         return;
     }
     const parentElement = event.target.parentElement;
@@ -58,7 +71,31 @@ function handleClick(event) {
     }
     checkWin();
     countTries(event);
+    // if card is clicked, current image being displayed should have a class added of toggleImg, the other image should have the class of toggleImg removed. this will remove the image
+    console.log(containerOne);
+    console.log(coverCard);
+    console.log(cloudSockOne);
+    coverCard.classList.add('toggleImg');
+    cloudSockOne.classList.remove('toggleImg');
+
+    // if (containerOne.classList.contains('toggleImg')) {
+    //     console.log("toggle image found");
+    //     coverCard.classList.add('toggleImg');
+    //     cloudSockOne.classList.remove('toggleImg');
+    // }
+
+
+    // if (event.target.children[0].classList.contains('toggleImg')) {
+    //     console.log("toggle image found");
+    //     event.target.children[0].classList.remove('toggleImg');
+    // };
 };
+    // this works if laundryCard is not there
+    // console.log(event.target.children[0]);
+    // if (event.target.children[0].classList.contains('toggleImg')) {
+    //     console.log("toggle image found");
+    //     event.target.children[0].classList.remove('toggleImg');
+    // };
 
 // check for a match
 function checkMatch() {
@@ -120,4 +157,3 @@ cardElements.forEach((cardElement) => {
 });
 
 resetBtn.addEventListener('click', init);
-
