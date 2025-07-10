@@ -70,7 +70,22 @@ function handleClick(event) {
         secondCardClicked = parentElement.className;
         console.log(firstCardClicked);
         console.log(secondCardClicked);
-        checkMatch();
+        //match function
+        if (firstCardClicked === secondCardClicked) {
+        console.log('match');
+        matchedPairs = matchedPairs + 1;
+        console.log(matchedPairs);
+        // add class to cards that match (save this for the end)
+        // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
+        // cards flipped over, then won't be able to click again
+    } else if (firstCardClicked != secondCardClicked) {
+        console.log('not a match');
+        resetAfterMatch();
+        setTimeout(() => {
+        event.target.classList.remove('toggleImg');
+        event.target.nextElementSibling.classList.add('toggleImg');
+        }, 500);
+    }
     }
     checkWin();
     countTries(event);
@@ -103,19 +118,23 @@ function handleClick(event) {
 };
 
 // check for a match
-function checkMatch() {
-    if (firstCardClicked === secondCardClicked) {
-        console.log('match');
-        matchedPairs = matchedPairs + 1;
-        console.log(matchedPairs);
-        resetAfterMatch();
-        // add class to cards that match (save this for the end)
-        // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
-        // cards flipped over, then won't be able to click again
-    } else if (firstCardClicked != secondCardClicked) {
-        console.log('not a match');
-        resetAfterMatch();
-    }
+function checkMatch(event) {
+    // if (firstCardClicked === secondCardClicked) {
+    //     console.log('match');
+    //     matchedPairs = matchedPairs + 1;
+    //     console.log(matchedPairs);
+    //     resetAfterMatch();
+    //     // add class to cards that match (save this for the end)
+    //     // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
+    //     // cards flipped over, then won't be able to click again
+    // } else if (firstCardClicked != secondCardClicked) {
+    //     console.log('not a match');
+    //     resetAfterMatch();
+    //     setTimeout(() => {
+    //     event.target.classList.add('toggleImg');
+    //     event.target.nextElementSibling.classList.remove('toggleImg');
+    //     }, 500);
+    // }
     console.log(firstCardClicked);
     console.log(secondCardClicked);
 };
