@@ -48,10 +48,6 @@ init();
 // count number of tries
 // updateMessage to show tries used, tries left
 function countTries(event) {
-    console.log(event.target);
-    console.log(event.target.parentElement);
-    console.log(event.target.children);
-    console.log(event.target.nextElementSibling);
     tries = tries + 1;
     triesLeft = 50 - tries;
     updateMessage();
@@ -64,61 +60,48 @@ function handleClick(event) {
     }
     const parentElement = event.target.parentElement;
     if (firstCardClicked === undefined) {
-        firstCardClicked = parentElement.className;
+        firstCardClicked = parentElement;
         console.log(firstCardClicked);
+        firstCardClicked.children[0].classList.add('toggleImg');
+        firstCardClicked.children[1].classList.remove('toggleImg');
     } else {
-        secondCardClicked = parentElement.className;
-        console.log(firstCardClicked);
+        secondCardClicked = parentElement;
         console.log(secondCardClicked);
-        checkMatch();
-    }
-    checkWin();
+        secondCardClicked.children[0].classList.add('toggleImg');
+        secondCardClicked.children[1].classList.remove('toggleImg');
+    // flipCardBack(event);
+    // checkWin();
     countTries(event);
-    // if card is clicked, current image being displayed should have a class added of toggleImg, the other image should have the class of toggleImg removed. this will remove the image
-
-    // event.target is the first element inside of the div individual card elements
-    event.target.classList.add('toggleImg');
-    // event.target.nextElementSibling is the next element that is in the same card container div, in this case the next sib is an image
-    event.target.nextElementSibling.classList.remove('toggleImg');
-
-    
-    // toggling the first card in the first box
-    // console.log(cardElements);
-    // console.log(coverCard);
-    // console.log(cloudSockOne);
-    // coverCard.classList.add('toggleImg');
-    // cloudSockOne.classList.remove('toggleImg')
-
-    // if (containerOne.classList.contains('toggleImg')) {
-    //     console.log("toggle image found");
-    //     coverCard.classList.add('toggleImg');
-    //     cloudSockOne.classList.remove('toggleImg');
-    // }
-
-
-    // if (event.target.children[0].classList.contains('toggleImg')) {
-    //     console.log("toggle image found");
-    //     event.target.children[0].classList.remove('toggleImg');
-    // };
+    // setTimeout(() => {
+    //     firstCardClicked.classList.remove('toggleImg');
+    //     event.target.nextElementSibling.classList.add('toggleImg');
+    // }, 1000);
+    }
+    checkMatch();
 };
 
 // check for a match
 function checkMatch() {
     if (firstCardClicked === secondCardClicked) {
-        console.log('match');
         matchedPairs = matchedPairs + 1;
+        console.log('matched!');
         console.log(matchedPairs);
-        resetAfterMatch();
         // add class to cards that match (save this for the end)
         // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
         // cards flipped over, then won't be able to click again
-    } else if (firstCardClicked != secondCardClicked) {
-        console.log('not a match');
-        resetAfterMatch();
     }
-    console.log(firstCardClicked);
-    console.log(secondCardClicked);
+    //  else if (firstCardClicked != secondCardClicked) {
+    //     // resetAfterMatch();
+    // }
 };
+
+// if match is not found, flip back the cards that weren't a match
+// function flipCardBack(event) {
+//     if (firstCardClicked != secondCardClicked) {
+//         console.log(event.target); // show
+//         console.log(event.target.nextElementSibling); //hide
+//     }
+// }
 
 // after a match pair is found, reset to find another match
 function resetAfterMatch() {
