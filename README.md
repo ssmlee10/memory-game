@@ -1,4 +1,4 @@
-# Match the Missing Sock Pairs
+# 🧺 Match the Missing Sock Pairs 🧦
 
 Match the Missing Sock Pairs is a cozy game that involves the player helping Patty match her socks so they don't go missing!
 

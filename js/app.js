@@ -19,6 +19,7 @@ const messageElement = document.querySelector('#messageElement');
 const boardElements = document.querySelector('#board');
 const cardElements = document.querySelectorAll('.card');
 const resetBtn = document.querySelector('#reset');
+const audio = document.getElementById('audio');
 
 /*-------------- Functions -------------*/
 // initial board for reset
@@ -30,18 +31,14 @@ function init() {
     triesLeft = 50 - tries;
     messageElement.textContent = "";
 };
-//     cardElements.forEach(card) => {
-//         cardElements.children[0].classList.add('toggleImg');
-//         cardElements.children[1].classList.remove('toggleImg');
-//     }
-// }
 
 // register click values
 function handleClick(event) {
     // lose function
     // end game if 8 pairs not found in 50 tries
-    if (tries >= 50) {
+    if (tries === 50) {
         return;
+        updateMessage();
     }
     // win, end game
     if (matchedPairs === 8) {
@@ -77,6 +74,7 @@ function handleClick(event) {
 function countTries() {
     tries = tries + 1;
     triesLeft = 50 - tries;
+    updateMessage();
 };
 
 // check for a match
@@ -105,12 +103,7 @@ function flipCardBack() {
         const firstBack = firstCardClicked.children[1];
         const secondFront = secondCardClicked.children[0];
         const secondBack = secondCardClicked.children[1];
-        // firstCardClicked.children[0].classList.remove('toggleImg');
-        // firstCardClicked.children[1].classList.add('toggleImg');
-        // secondCardClicked.children[0].classList.remove('toggleImg');
-        // secondCardClicked.children[1].classList.add('toggleImg');
-        // timeout doesn't manipulate DOM, need to declare variables & use variables
-            setTimeout(() => {
+        setTimeout(() => {
             firstFront.classList.remove('toggleImg');
             firstBack.classList.add('toggleImg');
             secondFront.classList.remove('toggleImg');
@@ -127,13 +120,13 @@ function resetAfterMatch() {
 
 // udpateMessage showing how many pairs found thus far
 function updateMessage() {
-    if (tries >= 0) {
-        messageElement.textContent = `You have ${matchedPairs} matched pairs after ${tries} tries! Tries left: ${triesLeft}`
-    } else if (tries = 50) {
-        messageElement.textContent = `Sorry you lost :( Hit reset and try again!)`
+    if (tries === 50) {
+        messageElement.textContent = `You matched ${matchedPairs} out of 8 sock pairs! :( Hit reset and try again!`
+    } else if (tries >= 0) {
+        messageElement.textContent = `You have ${matchedPairs} matched pairs in ${tries} moves! Moves left: ${triesLeft}`
     }
     if (matchedPairs === 8) {
-        messageElement.textContent = `You found all 8 pairs! (It took you ${tries} moves.)\nThank you for being our sock-matching hero!! #teamnomorelonelysocks`
+        messageElement.textContent = `You found all 8 pairs in ${tries} moves! Impressive!\nThank you for being our sock-matching hero!! #teamnomorelonelysocks`
     }
 };
 
@@ -145,17 +138,8 @@ function checkWin() {
     }
 }
 
-// losing function
-
-
-// shuffle cards
-
-
-// restart game
-
-// add a timer
-
-// if timer runs out, stop game, and display try again message
+/*----------- Set Initial Audio Volume ----------*/
+audio.volume = 0.35;
 
 /*----------- Initaliaize Functions ----------*/
 init();
