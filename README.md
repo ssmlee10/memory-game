@@ -5,3 +5,5 @@ Match the Missing Sock Pairs is a cozy game that involves the player helping Pat
 Patty has experienced so many socks get lost in her laundry machine, in her hamper, and practically all over her house! 
 
 The player has to match 8 pairs of socks in 50 moves or less so that her socks don't go missing.
+
+[Link to play here!](https://ssmlee10.github.io/memory-game/)
