@@ -1,7 +1,7 @@
 body {
     /* background-color: #fffe9e; */
-    font-family: helvetica, sans-serif;
-    margin: 0;
+    font-family: "Gaegu", sans-serif;
+    font-size: 1.3em;
     text-align: center;
 }
 
@@ -39,6 +39,8 @@ img {
 }
 
 #reset {
+    font-family: "Gaegu", sans-serif;
+    font-size: .7em;
     padding: 15px 40px;
     background-color: teal;
     color: white;

@@ -7,9 +7,11 @@ let turn;
 let matchedPairs;
 let firstCardClicked;
 let secondCardClicked;
+let firstCardClass;
+let secondCardClass;
 let tries = 0;
 let triesLeft;
-let win;
+let win = false;
 let lose;
 
 /*----- Cached Element References  -----*/
@@ -17,10 +19,6 @@ const messageElement = document.querySelector('#messageElement');
 const boardElements = document.querySelector('#board');
 const cardElements = document.querySelectorAll('.card');
 const resetBtn = document.querySelector('#reset');
-// select the first container, then select the first img
-const containerOne = document.querySelector('.cloudSock');
-const coverCard = containerOne.querySelector('img');
-const cloudSockOne = containerOne.querySelectorAll('img')[1];
 
 /*-------------- Functions -------------*/
 // initial board for reset
@@ -30,114 +28,96 @@ function init() {
     matchedPairs = 0;
     tries = 0;
     triesLeft = 50 - tries;
-}
-init();
-
-// flip card on click
-// const img = document.querySelectorAll('faceCard');
-
-// cardElement.addEventListener('click', function() {
-//     if (img.classList.contains('toggleImg')) {
-//         img.classList.remove('toggleImg');
-//     } else {
-//         img.classList.add('toggleImg');
-//     }
-
-// })
-
-// count number of tries
-// updateMessage to show tries used, tries left
-function countTries(event) {
-    console.log(event.target);
-    console.log(event.target.parentElement);
-    console.log(event.target.children);
-    console.log(event.target.nextElementSibling);
-    tries = tries + 1;
-    triesLeft = 50 - tries;
-    updateMessage();
+    messageElement.textContent = "";
 };
+//     cardElements.forEach(card) => {
+//         cardElements.children[0].classList.add('toggleImg');
+//         cardElements.children[1].classList.remove('toggleImg');
+//     }
+// }
 
 // register click values
 function handleClick(event) {
+    // lose function
+    // end game if 8 pairs not found in 50 tries
     if (tries >= 50) {
         return;
     }
+    // win, end game
+    if (matchedPairs === 8) {
+        return;
+    }
+    countTries();
     const parentElement = event.target.parentElement;
     if (firstCardClicked === undefined) {
-        firstCardClicked = parentElement.className;
-        console.log(firstCardClicked);
+        firstCardClicked = parentElement;
+        console.log(firstCardClicked.getAttribute("class"));
+        console.log(tries);
+        firstCardClicked.children[0].classList.add('toggleImg');
+        firstCardClicked.children[1].classList.remove('toggleImg');
     } else {
-        secondCardClicked = parentElement.className;
-        console.log(firstCardClicked);
-        console.log(secondCardClicked);
-        //match function
-        if (firstCardClicked === secondCardClicked) {
-        console.log('match');
+        secondCardClicked = parentElement;
+        console.log(secondCardClicked.classList);
+        secondCardClicked.children[0].classList.add('toggleImg');
+        secondCardClicked.children[1].classList.remove('toggleImg');
+        let firstCardClass = firstCardClicked.getAttribute("class");
+        let secondCardClass = secondCardClicked.getAttribute("class");
+        flipCardBack();
+        checkWin();
+        checkMatch();
+        // setTimeout(() => {
+        //     firstCardClicked.classList.remove('toggleImg');
+        //     event.target.nextElementSibling.classList.add('toggleImg');
+        // }, 1000);
+    }
+};
+
+// count number of tries
+// updateMessage to show tries used, tries left
+function countTries() {
+    tries = tries + 1;
+    triesLeft = 50 - tries;
+};
+
+// check for a match
+function checkMatch() {
+    if (firstCardClicked.getAttribute("class") === secondCardClicked.getAttribute("class")) {
+        console.log(firstCardClicked.getAttribute("class"));
+        console.log(secondCardClicked.getAttribute("class"));
         matchedPairs = matchedPairs + 1;
+        updateMessage();
+        console.log('matched!');
         console.log(matchedPairs);
         // add class to cards that match (save this for the end)
         // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
         // cards flipped over, then won't be able to click again
-    } else if (firstCardClicked != secondCardClicked) {
-        console.log('not a match');
-        resetAfterMatch();
-        setTimeout(() => {
-        event.target.classList.remove('toggleImg');
-        event.target.nextElementSibling.classList.add('toggleImg');
-        }, 500);
     }
-    }
-    checkWin();
-    countTries(event);
-    // if card is clicked, current image being displayed should have a class added of toggleImg, the other image should have the class of toggleImg removed. this will remove the image
 
-    // event.target is the first element inside of the div individual card elements
-    event.target.classList.add('toggleImg');
-    // event.target.nextElementSibling is the next element that is in the same card container div, in this case the next sib is an image
-    event.target.nextElementSibling.classList.remove('toggleImg');
-
-    
-    // toggling the first card in the first box
-    // console.log(cardElements);
-    // console.log(coverCard);
-    // console.log(cloudSockOne);
-    // coverCard.classList.add('toggleImg');
-    // cloudSockOne.classList.remove('toggleImg')
-
-    // if (containerOne.classList.contains('toggleImg')) {
-    //     console.log("toggle image found");
-    //     coverCard.classList.add('toggleImg');
-    //     cloudSockOne.classList.remove('toggleImg');
-    // }
-
-
-    // if (event.target.children[0].classList.contains('toggleImg')) {
-    //     console.log("toggle image found");
-    //     event.target.children[0].classList.remove('toggleImg');
-    // };
+    resetAfterMatch();
 };
 
-// check for a match
-function checkMatch(event) {
-    // if (firstCardClicked === secondCardClicked) {
-    //     console.log('match');
-    //     matchedPairs = matchedPairs + 1;
-    //     console.log(matchedPairs);
-    //     resetAfterMatch();
-    //     // add class to cards that match (save this for the end)
-    //     // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
-    //     // cards flipped over, then won't be able to click again
-    // } else if (firstCardClicked != secondCardClicked) {
-    //     console.log('not a match');
-    //     resetAfterMatch();
-    //     setTimeout(() => {
-    //     event.target.classList.add('toggleImg');
-    //     event.target.nextElementSibling.classList.remove('toggleImg');
-    //     }, 500);
-    // }
-    console.log(firstCardClicked);
-    console.log(secondCardClicked);
-};
+// if match is not found, flip back the cards that weren't a match
+function flipCardBack() {
+    if (firstCardClicked.getAttribute("class") != secondCardClicked.getAttribute("class")) {
+        console.log(firstCardClicked.children[0]);
+        console.log(secondCardClicked);
+        const firstFront = firstCardClicked.children[0];
+        const firstBack = firstCardClicked.children[1];
+        const secondFront = secondCardClicked.children[0];
+        const secondBack = secondCardClicked.children[1];
+        // firstCardClicked.children[0].classList.remove('toggleImg');
+        // firstCardClicked.children[1].classList.add('toggleImg');
+        // secondCardClicked.children[0].classList.remove('toggleImg');
+        // secondCardClicked.children[1].classList.add('toggleImg');
+        // timeout doesn't manipulate DOM, need to declare variables & use variables
+            setTimeout(() => {
+            firstFront.classList.remove('toggleImg');
+            firstBack.classList.add('toggleImg');
+            secondFront.classList.remove('toggleImg');
+            secondBack.classList.add('toggleImg');
+        }, 1400);
+    }
+}
 
 // after a match pair is found, reset to find another match
 function resetAfterMatch() {
@@ -147,10 +127,13 @@ function resetAfterMatch() {
 
 // udpateMessage showing how many pairs found thus far
 function updateMessage() {
-    if (tries => 0) {
+    if (tries >= 0) {
         messageElement.textContent = `You have ${matchedPairs} matched pairs after ${tries} tries! Tries left: ${triesLeft}`
-    } else if (matchedPairs = 8) {
-        messageElement.textContent = `You found all 8 pairs! Thank you for contributing to the No Missing Socks Movement!`
+    } else if (tries = 50) {
+        messageElement.textContent = `Sorry you lost :( Hit reset and try again!)`
+    }
+    if (matchedPairs === 8) {
+        messageElement.textContent = `You found all 8 pairs! Thank you for being our sock-matching hero!`
     }
 };
 
@@ -174,10 +157,19 @@ function checkWin() {
 
 // if timer runs out, stop game, and display try again message
 
+/*----------- Initaliaize Functions ----------*/
+init();
+
+// same as clicking page refresh
+// assistance from Glenn
+const reload = () => {
+    window.location.reload();
+}
+
 /*----------- Event Listeners ----------*/
 // listen for card click, flip over when card has been clicked
 cardElements.forEach((cardElement) => {
     cardElement.addEventListener('click', handleClick);
 });
 
-resetBtn.addEventListener('click', init);
+resetBtn.addEventListener('click', reload);
