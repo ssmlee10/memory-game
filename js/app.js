@@ -133,7 +133,7 @@ function updateMessage() {
         messageElement.textContent = `Sorry you lost :( Hit reset and try again!)`
     }
     if (matchedPairs === 8) {
-        messageElement.textContent = `You found all 8 pairs! Thank you for being our sock-matching hero!! #teamnomorelonelysocks`
+        messageElement.textContent = `You found all 8 pairs! (It took you ${tries} moves.)\nThank you for being our sock-matching hero!! #teamnomorelonelysocks`
     }
 };
 

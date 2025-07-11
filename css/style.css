@@ -11,6 +11,10 @@ h1 {
     font-size: .8em;
 }
 
+#messageElement {
+    white-space: pre-line;
+}
+
 #board {
     display: flex;
     flex-wrap: wrap;
@@ -54,7 +58,7 @@ img {
 
 #audio {
     position: relative;
-    top: 15px;
+    top: 23px;
     left: 260px;
 }
 
