@@ -34,6 +34,7 @@ function init() {
 
 // register click values
 function handleClick(event) {
+    console.log(cardElements);
     // lose function
     // end game if 8 pairs not found in 50 tries
     if (tries === 50) {
@@ -144,7 +145,7 @@ audio.volume = 0.35;
 /*----------- Initaliaize Functions ----------*/
 init();
 
-// same as clicking page refresh
+// this functions the same way as clicking page refresh
 // assistance from Glenn
 const reload = () => {
     window.location.reload();

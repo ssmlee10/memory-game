@@ -63,7 +63,8 @@ img {
     left: 260px;
 }
 
-@media only screen and (max-width: 600px) {
+/* mobile */
+@media only screen and (max-width: 414px) {
   body {
     background-color: lightblue;
     font-family: "Gaegu", sans-serif;
