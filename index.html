@@ -1,101 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="images/laundryCard.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/x-icon" href="images/laundryCard.png" />
     <script defer src="js/app.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Gaegu&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Gaegu&display=swap");
     </style>
     <title>Memory Game</title>
-</head>
+  </head>
 
-<body>
-    <audio controls autoplay loop id="audio">
-        <source src="./audio/elevatorMusic.mp3">
-    </audio>
+  <body>
     <h1>🧺 Match the Sock Pairs 🧦</h1>
-    <p>Whenever we do laundry, our socks always seem to disappear! 🫠 <br>Please help us match our socks so they don't
-        go missing.</p>
-    <div id="messageElement"></div>
-    <!-- dialogue toggle -->
-    <section id="board">
-        <!-- Row 1 -->
-        <div class="card cloudSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock1.png" alt="pink cloud sock" class="toggleImg">
-        </div>
-        <div class="card flowerSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock2.png" alt="sock with yellow flowers" class="toggleImg">
-        </div>
-        <div class="card yellowSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock3.png" alt="yellow sock with white flower" class="toggleImg">
-        </div>
-        <div class="card pinkSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock4.png" alt="pink sock with polka dots" class="toggleImg">
-        </div>
-        <!-- Row 2 -->
-        <div class="card maroonSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock5.png" alt="maroon sock" class="toggleImg">
-        </div>
-        <div class="card maroonSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock5.png" alt="maroon sock" class="toggleImg">
-        </div>
-        <div class="card starSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock7.png" alt="blue sock with stars" class="toggleImg">
-        </div>
-        <div class="card flowerSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock2.png" alt="sock with yellow flowers" class="toggleImg">
-        </div>
-        <!-- Row 3 -->
-        <div class="card starSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock7.png" alt="blue sock with stars" class="toggleImg">
-        </div>
-        <div class="card cloudSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock1.png" alt="pink cloud sock" class="toggleImg">
-        </div>
-        <div class="card dotSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock8.png" alt="blue polka dot sock" class="toggleImg">
-        </div>
-        <div class="card blueSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock6.png" alt="blue baby sock" class="toggleImg">
-        </div>
-        <!-- Row 4 -->
-        <div class="card blueSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock6.png" alt="blue baby sock" class="toggleImg">
-        </div>
-        <div class="card pinkSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock4.png" alt="pink sock with polka dots" class="toggleImg">
-        </div>
-        <div class="card dotSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock8.png" alt="blue polka dot sock" class="toggleImg">
-        </div>
-        <div class="card yellowSock">
-            <img src="./images/laundryCard.png" alt="front face card girl doing laundry" class="coverCard">
-            <img src="./images/sock3.png" alt="yellow sock with white flower" class="toggleImg">
-        </div>
-    </section>
-    <button id="reset">Reset</button>
-    <p id="smallText">(Please turn on some music & relax while playing!<br>Audio player is in the top right hand
-        corner.)</p>
-</body>
+    <p>Patty does laundry every Friday. She enjoys folding laundry... that is until she gets to folding her socks!<br><br>
+    They seem to disappear frequently. This is a worry that Patty thinks about every time she does laundry. "Where do my lost socks go? Will they ever be reunited with their matches?"<br><br>
+    She needs your help in matching her socks, so that they don't disappear!
+    </p>
+    <a href="gamePage.html">
+      <button>Match Patty's Socks!</button>
+    </a>
+  </body>
 
 </html>
