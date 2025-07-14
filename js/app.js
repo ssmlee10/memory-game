@@ -10,6 +10,6 @@ enterBtn.addEventListener("click", () => {
   clickSound.currentTime = 0;
   clickSound.play();
   setTimeout(() => {
-    window.location.href = "../pages/gamePage.html";
+    window.location.href = "pages/gamePage.html";
   }, 300);
 });
