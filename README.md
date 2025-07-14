@@ -30,6 +30,8 @@ This resource was used to create a hover state and animation when button was cli
 
 [Background Music](https://youtu.be/99cbvKoOyy0?si=2Y2150_Ai3-7vnx1): "Coffee Time 2"
 
+[Bubble Click Audio](https://youtu.be/Ge2zHoXskC8?si=amvjcMLBhjAuxYI2): Bubble Click Sound Effect
+
 [Mouse Click Audio](https://youtu.be/i0DON3AjhW4?si=2ZbR3o9x8UqFCltl): Click Sound Effect
 
 ## Technologies Used
