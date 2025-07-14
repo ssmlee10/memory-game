@@ -5,8 +5,6 @@ let turn;
 let matchedPairs;
 let firstCardClicked;
 let secondCardClicked;
-let firstCardClass;
-let secondCardClass;
 let tries = 0;
 let triesLeft;
 let win = false;
@@ -17,7 +15,9 @@ const messageElement = document.querySelector("#messageElement");
 const boardElements = document.querySelector("#board");
 const cardElements = document.querySelectorAll(".card");
 const resetBtn = document.querySelector("#reset");
-const audio = document.getElementById("audio");
+const clickSound = document.getElementById("clickSound");
+const bubbleClick = document.getElementById("bubbleClick");
+// const enterBtn = document.getElementById("enterBtn");
 
 /*-------------- Functions -------------*/
 // initial board
@@ -31,17 +31,16 @@ function init() {
 
 // registers click values
 function handleClick(event) {
+  countTries();
   // lose function
   // end the game if 8 pairs not found in 50 tries
   if (tries === 50) {
     return;
-    updateMessage();
   }
   // win function, end game
   if (matchedPairs === 8) {
     return;
   }
-  countTries();
   const parentElement = event.target.parentElement;
   if (firstCardClicked === undefined) {
     firstCardClicked = parentElement;
@@ -51,8 +50,6 @@ function handleClick(event) {
     secondCardClicked = parentElement;
     secondCardClicked.children[0].classList.add("toggleImg");
     secondCardClicked.children[1].classList.remove("toggleImg");
-    let firstCardClass = firstCardClicked.getAttribute("class");
-    let secondCardClass = secondCardClicked.getAttribute("class");
     flipCardBack();
     checkWin();
     checkMatch();
@@ -109,11 +106,11 @@ function resetAfterMatch() {
 }
 
 // udpateMessage showing how many pairs found thus far
-// updateMessage at lose
-// updateMessage at win
+// updateMessage at lose (tries = 50)
+// updateMessage at win (matchedPairs = 8)
 function updateMessage() {
   if (tries === 50) {
-    messageElement.textContent = `You matched ${matchedPairs} out of 8 sock pairs! :( Hit reset and try again!`;
+    messageElement.textContent = `You matched ${matchedPairs} out of 8 sock pairs! :(\nHit reset and try again!`;
   } else if (tries >= 0) {
     messageElement.textContent = `You have ${matchedPairs} matched pairs in ${tries} moves!\nMoves left: ${triesLeft}`;
   }
@@ -132,7 +129,7 @@ function checkWin() {
 // /*----------- Set Initial Audio Volume ----------*/
 // audio.volume = 0.35;
 
-/*----------- Initaliaize Functions ----------*/
+/*----------- Initialize Functions ----------*/
 init();
 
 // this functions the same way as clicking page refresh
@@ -147,4 +144,24 @@ cardElements.forEach((cardElement) => {
   cardElement.addEventListener("click", handleClick);
 });
 
+cardElements.forEach((cardElement) => {
+  cardElement.addEventListener("click", () => {
+    bubbleClick.currentTime = 0;
+    bubbleClick.play();
+  });
+});
+
 resetBtn.addEventListener("click", reload);
+
+resetBtn.addEventListener("click", () => {
+  clickSound.currentTime = 0;
+  clickSound.play();
+});
+
+// console.log(enterBtn);
+
+// enterBtn.addEventListener("click", () => {
+//   console.log(enterButton);
+//   clickSound.currentTime = 0;
+//   clickSound.play;
+// });
