@@ -1,66 +1,100 @@
 body {
-    /* background-color: #fffe9e; */
-    font-family: "Gaegu", sans-serif;
-    font-size: 1.3em;
-    text-align: center;
+  /* background-color: #a2d5d5; */
+  background-image: url("../images/sockBackground.png");
+  background-size: cover;
+  font-family: "Gaegu", sans-serif;
+  font-size: 1.3em;
+  text-align: center;
+  width: 75%;
+  margin: 2em auto;
 }
+
+.content {
+  background-color: rgba(255, 255, 255);
+  max-width: 800px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
 h1 {
-    margin: 1em 0 0;
+  margin: 1em 0 0;
 }
+
 #smallText {
-    font-size: .8em;
+  font-size: 0.8em;
+}
+
+#intro {
+  padding: 1em 0;
 }
 
 #messageElement {
-    white-space: pre-line;
-    text-decoration: underline;
+  white-space: pre-line;
+  text-decoration: underline;
 }
 
 #board {
-    display: flex;
-    flex-wrap: wrap;
-    width: 50%;
-    margin: auto;
-    padding: 0 0 30px 0;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: auto;
+  padding: 0 0 30px 0;
+  justify-content: center;
+  text-align: center;
 }
 
 .card {
-    background-color: white;
-    width: 20%;
-    aspect-ratio: 1/1;
-    border: 1px solid black;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
+  background-color: white;
+  width: 20%;
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
 }
 
 img {
-    width: 95%;
+  width: 95%;
 }
 .toggleImg {
-    display: none;
+  display: none;
 }
 #messageElement {
-    font-weight: bold;
-    padding: 0 0 15px 0;
+  font-weight: bold;
+  padding: 0 0 15px 0;
 }
 
 button {
-    font-family: "Gaegu", sans-serif;
-    font-size: .7em;
-    padding: 15px 40px;
-    background-color: teal;
-    color: white;
+  font-family: "Gaegu", sans-serif;
+  font-size: 0.7em;
+  padding: 15px 40px;
+  background-color: #008080;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px #8d8d8d;
+  margin: 2em 0;
+}
+
+button:hover {
+  background-color: #004d4d;
+}
+
+button:active {
+  background-color: #004d4d;
+  box-shadow: 0 5px #626262;
+  transform: translateY(4px);
 }
 
 #audio {
-    position: relative;
-    top: 23px;
-    left: 260px;
+  position: relative;
+  top: 23px;
+  left: 260px;
 }
 
 /* mobile */

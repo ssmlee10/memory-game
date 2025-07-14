@@ -29,7 +29,6 @@ function init() {
     matchedPairs = 0;
     tries = 0;
     triesLeft = 50 - tries;
-    messageElement.textContent = "";
 };
 
 // register click values
@@ -127,7 +126,7 @@ function updateMessage() {
         messageElement.textContent = `You have ${matchedPairs} matched pairs in ${tries} moves! Moves left: ${triesLeft}`
     }
     if (matchedPairs === 8) {
-        messageElement.textContent = `You found all 8 pairs in ${tries} moves! Impressive!\nThank you for being our sock-matching hero!! #teamnomorelonelysocks`
+        messageElement.textContent = `Impressive! You found all 8 pairs in ${tries} moves!\nThank you for being our sock-matching hero!! #teamnomorelonelysocks`
     }
 };
 
@@ -139,8 +138,8 @@ function checkWin() {
     }
 }
 
-/*----------- Set Initial Audio Volume ----------*/
-audio.volume = 0.35;
+// /*----------- Set Initial Audio Volume ----------*/
+// audio.volume = 0.35;
 
 /*----------- Initaliaize Functions ----------*/
 init();
