@@ -15,9 +15,7 @@ const messageElement = document.querySelector("#messageElement");
 const boardElements = document.querySelector("#board");
 const cardElements = document.querySelectorAll(".card");
 const resetBtn = document.querySelector("#reset");
-const clickSound = document.getElementById("clickSound");
 const bubbleClick = document.getElementById("bubbleClick");
-const enterBtn = document.getElementById("enterBtn");
 
 /*-------------- Functions -------------*/
 // initial board

@@ -1,12 +1,13 @@
 /*----- Cached Element References  -----*/
 const enterBtn = document.getElementById("enterBtn");
+const clickSound = document.getElementById("clickSound");
 
 /*----------- Event Listeners ----------*/
 console.log(enterBtn);
 enterBtn.addEventListener("click", () => {
-  console.log("hello");
   clickSound.currentTime = 0;
-  clickSound.play;
+  clickSound.play();
   setTimeout(() => {
-  }, 300);
+    window.location.href = "../pages/gamePage.html";
+  },300);
 });
