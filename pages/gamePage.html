@@ -14,193 +14,216 @@
   </head>
 
   <body>
+    <!-- audio player and files -->
     <audio controls autoplay loop id="audio">
       <source src="../audio/elevatorMusic.mp3" />
     </audio>
+    <audio id="clickSound" src="/audio/click.mp3" style="display: none"></audio>
+
+    <!-- Page Content -->
     <div class="content">
-    <h1>🧺 Match the Sock Pairs 🧦</h1>
-    <p>Please help Patty match her socks so they don't go missing.</p>
-    <div id="messageElement"></div>
-    <!-- dialogue toggle -->
-    <section id="board">
-      <!-- Row 1 -->
-      <div class="card cloudSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img src="../images/sock1.png" alt="pink cloud sock" class="toggleImg" />
-      </div>
-      <div class="card flowerSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img
-          src="../images/sock2.png"
-          alt="sock with yellow flowers"
-          class="toggleImg"
-        />
-      </div>
-      <div class="card yellowSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img
-          src="../images/sock3.png"
-          alt="yellow sock with white flower"
-          class="toggleImg"
-        />
-      </div>
-      <div class="card pinkSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img
-          src="../images/sock4.png"
-          alt="pink sock with polka dots"
-          class="toggleImg"
-        />
-      </div>
-      <!-- Row 2 -->
-      <div class="card maroonSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img src="../images/sock5.png" alt="maroon sock" class="toggleImg" />
-      </div>
-      <div class="card maroonSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img src="../images/sock5.png" alt="maroon sock" class="toggleImg" />
-      </div>
-      <div class="card starSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img
-          src="../images/sock7.png"
-          alt="blue sock with stars"
-          class="toggleImg"
-        />
-      </div>
-      <div class="card flowerSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img
-          src="../images/sock2.png"
-          alt="sock with yellow flowers"
-          class="toggleImg"
-        />
-      </div>
-      <!-- Row 3 -->
-      <div class="card starSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img
-          src="../images/sock7.png"
-          alt="blue sock with stars"
-          class="toggleImg"
-        />
-      </div>
-      <div class="card cloudSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img src="../images/sock1.png" alt="pink cloud sock" class="toggleImg" />
-      </div>
-      <div class="card dotSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img
-          src="../images/sock8.png"
-          alt="blue polka dot sock"
-          class="toggleImg"
-        />
-      </div>
-      <div class="card blueSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img src="../images/sock6.png" alt="blue baby sock" class="toggleImg" />
-      </div>
-      <!-- Row 4 -->
-      <div class="card blueSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img src="../images/sock6.png" alt="blue baby sock" class="toggleImg" />
-      </div>
-      <div class="card pinkSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img
-          src="../images/sock4.png"
-          alt="pink sock with polka dots"
-          class="toggleImg"
-        />
-      </div>
-      <div class="card dotSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img
-          src="../images/sock8.png"
-          alt="blue polka dot sock"
-          class="toggleImg"
-        />
-      </div>
-      <div class="card yellowSock">
-        <img
-          src="../images/laundryCard.png"
-          alt="front face card girl doing laundry"
-          class="coverCard"
-        />
-        <img
-          src="../images/sock3.png"
-          alt="yellow sock with white flower"
-          class="toggleImg"
-        />
-      </div>
-    </section>
-    <button id="reset">Reset</button>
-    <p id="smallText">
-      (There's some cozy music playing in the background.<br />
-      Use the audio controller at the top right to pause or adjust!)
-    </p>
-</div>
+      <h1>🧺 Match the Sock Pairs 🧦</h1>
+      <p>Please help Patty match her socks so they don't go missing.</p>
+
+      <!-- Game Status Message Update -->
+      <div id="messageElement"></div>
+
+      <!-- Game Board 4x4 Grid -->
+      <section id="board">
+        <!-- Board Row 1 -->
+        <div class="card cloudSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock1.png"
+            alt="pink cloud sock"
+            class="toggleImg"
+          />
+        </div>
+        <div class="card flowerSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock2.png"
+            alt="sock with yellow flowers"
+            class="toggleImg"
+          />
+        </div>
+        <div class="card yellowSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock3.png"
+            alt="yellow sock with white flower"
+            class="toggleImg"
+          />
+        </div>
+        <div class="card pinkSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock4.png"
+            alt="pink sock with polka dots"
+            class="toggleImg"
+          />
+        </div>
+        <!-- Board Row 2 -->
+        <div class="card maroonSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img src="../images/sock5.png" alt="maroon sock" class="toggleImg" />
+        </div>
+        <div class="card maroonSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img src="../images/sock5.png" alt="maroon sock" class="toggleImg" />
+        </div>
+        <div class="card starSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock7.png"
+            alt="blue sock with stars"
+            class="toggleImg"
+          />
+        </div>
+        <div class="card flowerSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock2.png"
+            alt="sock with yellow flowers"
+            class="toggleImg"
+          />
+        </div>
+        <!-- Board Row 3 -->
+        <div class="card starSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock7.png"
+            alt="blue sock with stars"
+            class="toggleImg"
+          />
+        </div>
+        <div class="card cloudSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock1.png"
+            alt="pink cloud sock"
+            class="toggleImg"
+          />
+        </div>
+        <div class="card dotSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock8.png"
+            alt="blue polka dot sock"
+            class="toggleImg"
+          />
+        </div>
+        <div class="card blueSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock6.png"
+            alt="blue baby sock"
+            class="toggleImg"
+          />
+        </div>
+        <!-- Board Row 4 -->
+        <div class="card blueSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock6.png"
+            alt="blue baby sock"
+            class="toggleImg"
+          />
+        </div>
+        <div class="card pinkSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock4.png"
+            alt="pink sock with polka dots"
+            class="toggleImg"
+          />
+        </div>
+        <div class="card dotSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock8.png"
+            alt="blue polka dot sock"
+            class="toggleImg"
+          />
+        </div>
+        <div class="card yellowSock">
+          <img
+            src="../images/laundryCard.png"
+            alt="front face card girl doing laundry"
+            class="coverCard"
+          />
+          <img
+            src="../images/sock3.png"
+            alt="yellow sock with white flower"
+            class="toggleImg"
+          />
+        </div>
+      </section>
+      <button id="reset">Reset</button>
+      <p id="smallText">
+        (There's some cozy music playing in the background.<br />
+        Use the audio controller at the top right to pause or adjust!)
+      </p>
+    </div>
   </body>
 </html>

@@ -1,8 +1,6 @@
 /*-------------- Constants -------------*/
 
 /*---------- Variables (state) ---------*/
-// setup board
-let gameBoard;
 let turn;
 let matchedPairs;
 let firstCardClicked;
@@ -22,7 +20,7 @@ const resetBtn = document.querySelector("#reset");
 const audio = document.getElementById("audio");
 
 /*-------------- Functions -------------*/
-// initial board for reset
+// initial board
 function init() {
   firstCardClicked = undefined;
   secondCardClicked = undefined;
@@ -31,15 +29,15 @@ function init() {
   triesLeft = 50 - tries;
 }
 
-// register click values
+// registers click values
 function handleClick(event) {
   // lose function
-  // end game if 8 pairs not found in 50 tries
+  // end the game if 8 pairs not found in 50 tries
   if (tries === 50) {
     return;
     updateMessage();
   }
-  // win, end game
+  // win function, end game
   if (matchedPairs === 8) {
     return;
   }
@@ -47,13 +45,10 @@ function handleClick(event) {
   const parentElement = event.target.parentElement;
   if (firstCardClicked === undefined) {
     firstCardClicked = parentElement;
-    console.log(firstCardClicked.getAttribute("class"));
-    console.log(tries);
     firstCardClicked.children[0].classList.add("toggleImg");
     firstCardClicked.children[1].classList.remove("toggleImg");
   } else {
     secondCardClicked = parentElement;
-    console.log(secondCardClicked.classList);
     secondCardClicked.children[0].classList.add("toggleImg");
     secondCardClicked.children[1].classList.remove("toggleImg");
     let firstCardClass = firstCardClicked.getAttribute("class");
@@ -64,7 +59,7 @@ function handleClick(event) {
   }
 }
 
-// count number of tries
+// count number of tries, count number of tries left
 // updateMessage to show tries used, tries left
 function countTries() {
   tries = tries + 1;
@@ -80,13 +75,11 @@ function checkMatch() {
   ) {
     matchedPairs = matchedPairs + 1;
     updateMessage();
+    // matched class makes cards unclickable after matched
+    // sets opacity to 0.7 so there is a visual difference in matched pairs
     firstCardClicked.classList.add("matched");
     secondCardClicked.classList.add("matched");
-    // add class to cards that match (save this for the end)
-    // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
-    // cards flipped over, then won't be able to click again
   }
-
   resetAfterMatch();
 }
 
@@ -96,8 +89,6 @@ function flipCardBack() {
     firstCardClicked.getAttribute("class") !=
     secondCardClicked.getAttribute("class")
   ) {
-    console.log(firstCardClicked.children[0]);
-    console.log(secondCardClicked);
     const firstFront = firstCardClicked.children[0];
     const firstBack = firstCardClicked.children[1];
     const secondFront = secondCardClicked.children[0];
@@ -118,6 +109,8 @@ function resetAfterMatch() {
 }
 
 // udpateMessage showing how many pairs found thus far
+// updateMessage at lose
+// updateMessage at win
 function updateMessage() {
   if (tries === 50) {
     messageElement.textContent = `You matched ${matchedPairs} out of 8 sock pairs! :( Hit reset and try again!`;
@@ -133,7 +126,6 @@ function updateMessage() {
 function checkWin() {
   if (matchedPairs === 8) {
     win = true;
-    console.log(win);
   }
 }
 
