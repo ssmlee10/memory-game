@@ -8,7 +8,6 @@ let secondCardClicked;
 let tries = 0;
 let triesLeft;
 let win = false;
-let lose;
 
 /*----- Cached Element References  -----*/
 const messageElement = document.querySelector("#messageElement");
@@ -29,10 +28,14 @@ function init() {
 
 // registers click values
 function handleClick(event) {
+  // if the div is clicked, this makes it not apply the class of toggleImg and remove the
+  if(event.target.tagName !== "IMG") {
+    return;
+  }
   countTries();
   // lose function
   // end the game if 8 pairs not found in 50 tries
-  if (tries === 50) {
+  if (tries >= 50) {
     return;
   }
   // win function, end game
@@ -107,8 +110,9 @@ function resetAfterMatch() {
 // updateMessage at lose (tries = 50)
 // updateMessage at win (matchedPairs = 8)
 function updateMessage() {
-  if (tries === 50) {
+  if (tries >= 50) {
     messageElement.textContent = `You matched ${matchedPairs} out of 8 sock pairs! :(\nHit reset and try again!`;
+    return;
   } else if (tries >= 0) {
     messageElement.textContent = `You have ${matchedPairs} matched pairs in ${tries} moves!\nMoves left: ${triesLeft}`;
   }
