@@ -33,7 +33,6 @@ function init() {
 
 // register click values
 function handleClick(event) {
-    console.log(cardElements);
     // lose function
     // end game if 8 pairs not found in 50 tries
     if (tries === 50) {
@@ -62,10 +61,6 @@ function handleClick(event) {
         flipCardBack();
         checkWin();
         checkMatch();
-        // setTimeout(() => {
-        //     firstCardClicked.classList.remove('toggleImg');
-        //     event.target.nextElementSibling.classList.add('toggleImg');
-        // }, 1000);
     }
 };
 
@@ -80,12 +75,10 @@ function countTries() {
 // check for a match
 function checkMatch() {
     if (firstCardClicked.getAttribute("class") === secondCardClicked.getAttribute("class")) {
-        console.log(firstCardClicked.getAttribute("class"));
-        console.log(secondCardClicked.getAttribute("class"));
         matchedPairs = matchedPairs + 1;
         updateMessage();
-        console.log('matched!');
-        console.log(matchedPairs);
+        firstCardClicked.classList.add('matched');
+        secondCardClicked.classList.add('matched');
         // add class to cards that match (save this for the end)
         // somehow do something with the class, can't be clicked on, so same pairs are not clicked again
         // cards flipped over, then won't be able to click again
@@ -108,7 +101,7 @@ function flipCardBack() {
             firstBack.classList.add('toggleImg');
             secondFront.classList.remove('toggleImg');
             secondBack.classList.add('toggleImg');
-        }, 1400);
+        }, 1000);
     }
 }
 
