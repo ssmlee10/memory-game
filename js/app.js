@@ -132,12 +132,6 @@ function checkWin() {
 /*----------- Initialize Functions ----------*/
 init();
 
-// this functions the same way as clicking page refresh
-// assistance from Glenn
-const reload = () => {
-  window.location.reload();
-};
-
 /*----------- Event Listeners ----------*/
 // listen for card click, flip over when card has been clicked
 cardElements.forEach((cardElement) => {
@@ -151,17 +145,18 @@ cardElements.forEach((cardElement) => {
   });
 });
 
-resetBtn.addEventListener("click", reload);
-
 resetBtn.addEventListener("click", () => {
+  console.log("hello");
   clickSound.currentTime = 0;
   clickSound.play();
+  setTimeout(() => {
+    // this functions the same way as clicking page refresh
+    window.location.reload();
+  }, 300);
 });
 
-// console.log(enterBtn);
-
-// enterBtn.addEventListener("click", () => {
-//   console.log(enterButton);
-//   clickSound.currentTime = 0;
-//   clickSound.play;
-// });
+enterBtn.addEventListener("click", () => {
+  console.log(enterButton);
+  clickSound.currentTime = 0;
+  clickSound.play;
+});
