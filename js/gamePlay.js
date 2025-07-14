@@ -29,7 +29,7 @@ function init() {
 // registers click values
 function handleClick(event) {
   // if the div is clicked, this makes it not apply the class of toggleImg and remove the
-  if(event.target.tagName !== "IMG") {
+  if (event.target.tagName !== "IMG") {
     return;
   }
   countTries();
